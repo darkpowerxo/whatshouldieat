@@ -6,6 +6,8 @@ import { useState } from 'react';
 export default function Home() {
   const url = 'https://www.themealdb.com/api/json/v1/1/random.php';
   const [food, setFood] = useState('');
+  const [source, setSource] = useState('');
+  const [show, setShow] = useState(false);
   const showfood = () => {
     fetch(url)
       .then((res) => res.json())
@@ -13,27 +15,42 @@ export default function Home() {
   };
   const displayFoods = (foods) => {
     foods.map((food) => {
-      setFood(food.strArea);
+      setFood(food.strMeal);
+      setSource(food.strSource);
+      setShow(true);
     });
   };
   return (
-    <div className={styles.container}>
+    <div class={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>what should i eat</title>
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">food</a>
-          <p>&nbsp;</p>
-          <button onClick={showfood} class="btn">
-            show food
-          </button>
-          <p id="foodtype">{food}</p>
+      <main class={styles.main}>
+        <h1 class={styles.title}>
+          Welcome to <a href="https://www.google.com/search?q=food">food</a>
         </h1>
+        <button onClick={showfood} class="btn">
+          show food
+        </button>
+        {show ? (
+          <div class={styles.title}>
+            <a
+              href={source}
+            >
+              make {food}
+            </a>
+            <p></p>
+            <a
+              class="foodtype"
+              href={'https://www.ubereats.com/search?q=' + food}
+            >
+              order {food}
+            </a>
+          </div>
+        ) : null}
       </main>
 
-      <footer className={styles.footer}>
+      <footer class={styles.footer}>
         <a
           href="https://theproject1.com"
           target="_blank"

@@ -1,3 +1,3 @@
-# nextjs-nhtghm
+# What should i eat
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/nextjs-nhtghm)
+[try it](https://darkpowerxo.github.io/whatshouldieat/)
